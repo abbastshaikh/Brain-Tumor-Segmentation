@@ -1,4 +1,4 @@
-# A Deep Learning Framework for Automated Brain Tumor Segmentation and Surival Prediction using Multimodal MRI Scans
+# A Deep Learning Framework for Automated Brain Tumor Segmentation and Survival Prediction using Multimodal MRI Scans
 
 This work was completed as part of the Brain Tumor Segmentation (BraTS) Challenge 2020<sup>[1-5]</sup>.
 
