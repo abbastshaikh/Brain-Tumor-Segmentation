@@ -5,7 +5,7 @@ This work was completed as part of the Brain Tumor Segmentation (BraTS) Challeng
 ## Background
 Gliomas are the most common and fatal type of brain tumors. Diagnosis and treatment planning for gliomas largely relies on manual interpretation of magnetic resonance images (MRIs) with can be inefficient and subjective and often leads to suboptimal treatment plans. 
 
-Hence, the goal of this project was to design a comprehensive suite of algorithms using deep learning and other machine learning algorithms for the automated interpretation of multimodal MRI scans with 3 particular goals
+Hence, the goal of this project was to design a comprehensive suite of algorithms using deep learning and other machine learning algorithms for the automated interpretation of multimodal MRI scans with 3 particular goals in mind:
 1. Segmentation of the brain tumor
 2. Classification of the tumor grade
 3. Estimation of the length of patient survival
@@ -24,13 +24,13 @@ The dataset, provided as part of the BraTS Challenge 2020, included 4 sequences 
 
 ### Methodology
 
- The complete methodology for segmentation, tumor grade classification, and survival prediction is shown below:
+ The complete proposed methodology for segmentation, tumor grade classification, and survival prediction is shown below:
  
  ![methodology](imgs/methodology.png)
 
 ### Segmentation
 
-Segmentation is performed by ensembling several 2-dimensional convolutional neural networks. The CNN architecture is composed of a modified U-Net<sup>[6]</sup>, which includes Waterfall Atrous Spatial Pooling<sup>[7]</sup> to enhance the ability of the network to incorporate contextual information as well as attention gates<sup>[8]</sup> to improve network's accuracy in predicting regions with small areas and large variability in shape. The architecture of the network is shown below:
+Segmentation is performed by ensembling several 2-dimensional convolutional neural networks. Each network is composed of a U-Net architecture<sup>[6]</sup>, modified to include Waterfall Atrous Spatial Pooling<sup>[7]</sup> to enhance the ability of the network to incorporate contextual information as well as attention gates<sup>[8]</sup> to improve network's accuracy in predicting regions with small areas and large variability in shape. The proposed architecture of the network is shown below:
 
 ![architecture](imgs/architecture.png)
 
@@ -38,15 +38,15 @@ Three CNNs were trained to process the 4 MRI scans along the sagittal, coronal, 
 
 ### Tumor Grade Classification and Survival Prediction
 
-A radiomic feature extraction was used to extract 440 quantative features about tumor shape, texture, and heterogeneity from the scans and associated segmentation for each patient, which as joined with patient features such as age. A random forest classifier was then used to predict tumor grade and the length of survival (short, mid, or long-term).
+A radiomic feature extraction was used to extract 440 quantative features about tumor shape, texture, and heterogeneity from the scans and associated segmentation for each patient, which was joined with patient features such as age. A random forest classifier was then used to predict tumor grade and the length of survival (short, mid, or long-term) on the radiomic and patient features.
 
 ## Results
 
-The segmentation model performed with an accuracy at a Dice similarity coefficient of 0.762, with a specificity of 0.734 and sensitivity of 0.989. A comparison of the model's prediction with the ground-truth annotation is shown below:
+The segmentation model performed at a Dice similarity coefficient of 0.762, with a specificity of 0.734 and sensitivity of 0.989. A comparison of the model's prediction with the ground-truth annotation is shown below:
 
 ![predictions](imgs/predictions.png)
 
-Tumor classification was performed at an accuracy of 94.6% and survival prediction at an accuracy of 61.7%. The following radiomic features were identified as particularly important for the above tasks:
+Tumor classification was performed at an accuracy of 94.6% and survival prediction at an accuracy of 61.7%. The following radiomic features were identified as particularly important for the these tasks:
 
 <p align="middle">
   <img src="imgs/survivalprediction.png" height=300 />
